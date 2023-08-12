@@ -6,19 +6,21 @@
 
 int main(void)
 {
+	char s;
+
 	int t;
 
-	for (t = 0 ; t < 16 ; t++)
-	{
-		if (t < 10)
-		{
-			putchar('0' + t);
+	s = 'a';
+	t = 0;
+	while
+		(t < 10) {
+			putchar(t + '0');
+			t++;
 		}
-		else
-		{
-			putchar(87 + t);
-		}
+	while(s <= 'f') {
+			putchar(s);
+			s++;
 	}
-	putchar('\t');
+	putchar('\n');
 	return (0);
-}
+		}
