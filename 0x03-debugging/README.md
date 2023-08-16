@@ -1,1 +1,2 @@
-#0x03. C - Debugging project work
+# 0x03. C - Debugging
+This is a project on Debugging
