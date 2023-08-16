@@ -1,41 +1,31 @@
 #include "main.h"
 /**
-*print_times_able - prints the  times table with
-*parameter
-*@n: parameter
-*Return: returns nothing
-*/
-void print_times_table(int n)
-{
-int digit, mult, result;
-if (n <= 15 && n >= 0)
-{
-for (digit = 0; digit <= n; digit++)
-{
-_putchar('0');
+ * print_to_98 - prints all natural numbers from n to 98,
+ * followed by a new line
+ * @n: print from this number
+ */
 
-for (mult = 1; mult <= n; mult++)
+void print_to_98(int n)
 {
-_putchar(',');
-_putchar(' ');
-result = digit * mult;
-if (result <= 99)
-_putchar(' ');
+int i, j;
 
-if (result <= 9)
-_putchar(' ');
-if (result >= 100)
+if (n <= 98)
 {
-_putchar((result / 100) + '0');
-_putchar((result / 10) % 10 + '0');
-}
-else if (result <= 99 && result >= 10)
+for (i = n; i <= 98; i++)
 {
-_putchar((result / 10) + '0');
+if (i != 98)
+printf("%d, ", i);
+else if (i == 98)
+printf("%d\n", i);
 }
-_putchar((result % 10) + '0');
-}
-_putchar('\n');
+} else if (n >= 98)
+{
+for (j = n; j >= 98; j--)
+{
+if (j != 98)
+printf("%d, ", j);
+else if (j == 98)
+printf("%d\n", j);
 }
 }
 }
