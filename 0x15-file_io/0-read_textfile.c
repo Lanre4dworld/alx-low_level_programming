@@ -1,45 +1,28 @@
 #include "main.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
 #include <stdlib.h>
 
 /**
-* read_textfile - This reads a text file and prints it to the POSIX stdo
-*
-* @filename: name of the file to read
-*
-* @letters: number of letters it should read and print
-*
-* Return: actual number of letters it could read and print
-*/
-
+ * read_textfile- Read text file print to STDOUT.
+ * @filename: text file being read
+ * @letters: number of letters to be read
+ * Return: w- actual number of bytes read and printed
+ *        0 when function fails or filename is NULL.
+ */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	ssize_t file, let, w;
-	char *text;
+	char *buf;
+	ssize_t fd;
+	ssize_t w;
+	ssize_t t;
 
-	text = malloc(letters);
-	if (text == NULL)
+	fd = open(filename, O_RDONLY);
+	if (fd == -1)
 		return (0);
+	buf = malloc(sizeof(char) * letters);
+	t = read(fd, buf, letters);
+	w = write(STDOUT_FILENO, buf, t);
 
-	if (filename == NULL)
-		return (0);
-
-	file = open(filename, O_RDONLY);
-
-	if (file == -1)
-	{
-		free(text);
-		return (0);
-	}
-
-	let = read(file, text, letters);
-
-	w = write(STDOUT_FILENO, text, let);
-
-	close(file);
-
+	free(buf);
+	close(fd);
 	return (w);
 }
